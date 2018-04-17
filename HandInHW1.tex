@@ -1,0 +1,126 @@
+% The name of your file
+\title{Ren_HW_01}
+
+% Set the document type and fontsize
+\documentclass[letterpaper, 11pt]{article}
+
+% Packages add additional functionality to your LaTeX document
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{fullpage} % changes the margin
+\usepackage{enumitem} % enumerate item lists
+\usepackage{graphicx} % include images in file
+\usepackage{cancel} % slash through to cancel
+\usepackage{amsmath} % align
+\usepackage{mathtools} % math stuff
+\usepackage{amssymb} % more math stuff
+
+\newtagform{brackets}{[}{]} % I like square brackets instead of parentheses
+\usetagform{brackets}
+
+% \newcommand allows you to create your own commands. \_i is the in-line version of a command
+\newcommand{\pderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pderivi}[2]{\partial #1/\partial  #2}
+\newcommand{\pdt}[1]{\frac{\partial #1}{\partial t}}
+\newcommand{\pdti}[1]{{\partial #1}/{\partial t}}
+\newcommand{\pdtt}[1]{\frac{\partial^2 #1}{\partial t^2}}
+\newcommand{\pdx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\pdy}[1]{\frac{\partial #1}{\partial y}}
+\newcommand{\pdxx}[1]{\frac{\partial^2 #1}{\partial x^2}}
+\newcommand{\pdyy}[1]{\frac{\partial^2 #1}{\partial y^2}}
+
+\begin{document}
+\noindent
+\large\textbf{Hand-in Homework 1} \hfill \textbf{Alice Ren} \\
+\normalsize SIO203B \hfill Date: \today \\
+
+% Remove auto-indent (this is a personal preference)
+\setlength{\parindent}{0pt}
+
+\section{} %Problem 1
+\[h_t + h_a = -\frac{\mu h}{1+\alpha t}\]
+(i)
+\[\int_{0}^{\infty} h(a,t) da = N\]
+\[\frac{dN}{dt} = b(t) - \int_{0}^{\infty} \frac{\mu}{1+\alpha t} h(a,t) da = 0\]
+\[b(t) = \frac{\mu}{1+\alpha t} \int_{0}^{\infty} h(a,t) da \]
+Since $\mu$ is not a function of $a$.
+\[b(t) = \frac{\mu}{1+\alpha t} N\]
+
+(ii)
+The average age should equal the average lifespan.
+\[N = b *(avg \quad life \quad span)\]
+\[\frac{N}{b} = \frac{1+\alpha t}{\mu}\]
+\[\bar{a} = \frac{1+\alpha t}{\mu}\]
+
+(iii)
+\[\frac{dh}{dt} = \frac{-\mu h}{1 + \alpha t}\]
+\[\frac{da}{dt} = 1\]
+\[a = t-c\]
+\[c = a-t = characteristic\]
+\[\frac{dh}{h} = \frac{-\mu}{1+\alpha t} dt\]
+\[ln(h) = \frac{\mu}{\alpha}ln(1 + \alpha t) +f(\xi)\]
+\[h = f(\xi)(1 + \alpha t)^{-\frac{\mu}{\alpha}}\]
+\[h(a, 0) = b_0e^{-\mu a}\]
+\[f(\xi) = b_0e^{-\mu (a-t)}\]
+\[h(a, t) = (1+ \alpha t)^{-\nu}b_0 e^{-\mu (a-t)}\]
+
+\section{} %Problem 2
+
+(i)
+\[\rho_t + (c(x)\rho)_x = 0\]
+
+(ii)
+The general solution
+\[\frac{dx}{dt} = c \quad with \quad x(0) = \xi\]
+\[\frac{dx}{c} = dt\]
+\[\int_{0}^{x}\frac{dx'}{c(x')} = t + \int_0^{\xi (x, t)} \frac{dx'}{c(x')} \]
+\[\frac{d\rho}{dt} = -c(x(\xi,t))_{(\xi \frac{d\xi}{dx})} \rho\]
+However, the problem can be solved if we take the total integral with respect to x rather than t.  Transforming the derivative:
+\[\frac{dt}{dx} \frac{d\rho}{dt} = \frac{d\rho}{dx}\]
+\[\frac{dt}{dx} = \frac{1}{c(x)}\]
+\[s(x) = \int_{0}^{x}\frac{dx'}{c(x')} \quad \quad s_x(x) = \frac{1}{c(x)} = \frac{dt}{dx}\]
+\[\frac{d\rho}{dx} = -\rho \frac{c_x(x)}{c(x)}\]
+\[\frac{d\rho}{\rho} = -\frac{c_x(x)}{c(x)}dx\] 
+\[\rho = A(\xi) \frac{1}{c(x)}\] where A denotes an arbitrary function.  To invert x and $\xi$:
+\[s(x) = t + s(\xi) \quad \quad s^{-1}(s(x) - t) = \xi\]
+General solution:
+\[\rho = A(s(x) - t)\frac{1}{c(x)}\]
+
+(iii) 
+With the initial condition $\rho(x, 0) = \rho_0(\xi)$
+\[\rho_0(\xi) = A(s(x))\frac{1}{c(x)}\]
+At $t=0$, $s(x) = s(\xi)$ and thus $x = \xi$:
+\[A(s(\xi))\frac{1}{c(\xi)} = \rho_0(\xi)\]
+\[A(s(\xi)) = c(\xi)\rho_0(\xi)\]
+General solution:
+\[\rho = \frac{c(\xi)\rho_0(\xi)}{c(x)} = \frac{c(s^{-1}(s(x)-t))\rho_0(s^{-1}(s(x)-t))}{c(x)}\] where $s^{-1}$ denotes the inverse of s.
+\\\\
+(iv)  To confirm the solution we plug in for $c(\xi)$, $\rho_0(\xi)$, and $c(x)$ at x = 0.   \\\\First, find $\xi$:
+\[s(x)-t = ln(e^{2x} + 2e^x) - t = s(\xi) = ln(e^{2\xi} + 2e^{\xi})\]
+At x = 0:
+\[ln(3) -t = ln(e^{2\xi} + 2e^{\xi})\]
+\[3e^{-t} = e^{2\xi} + 2e^{\xi}\]
+Complete the square:
+\[3e^{-t} + 1 = e^{2\xi} + 2e^{\xi} + 1\]
+\[\sqrt{3e^{-t} + 1} = e^\xi + 1\]
+\[\xi = ln(\sqrt{3e^{-t} + 1} -1)\]
+Finding $c(\xi)$ also takes a few lines of algebra:
+\[c(\xi) = \frac{e^{2(ln(\sqrt{3e^{-t} + 1} -1))} + 2e^{ln(\sqrt{3e^{-t} + 1} -1)}}   {2e^{2(ln(\sqrt{3e^{-t} + 1} -1))} + 2e^{ln(\sqrt{3e^{-t} + 1} -1)}}\]
+\[ = \frac{(\sqrt{3e^{-t} + 1} -1)^2 + 2(\sqrt{3e^{-t} + 1} -1)}  {2(\sqrt{3e^{-t} + 1} -1)^2 + 2(\sqrt{3e^{-t} + 1} -1)}\]
+
+\[= \frac{(3e^{-t} + 1) - 2(\sqrt{3e^{-t} + 1} -1) + 1 + 2\sqrt{3e^{-t} + 1} -2}  {2(3e^{-t} + 1) - 4(\sqrt{3e^{-t} + 1} -1) + 2 + 2\sqrt{3e^{-t} + 1} -2}\]
+
+\[c(\xi) = \frac{3e^{-t}}{2(3e^{-t} + 1) - 2\sqrt{3e^{-t} + 1}}\]
+
+The others are easy:
+\[\rho_0(\xi) = e^{-\xi^2}\]
+\[\rho_0(\xi) = e^{-ln^2(\sqrt{3e^{-t} + 1} -1)}\]
+\[c(0) = \frac{1 + 2}{2+2} = \frac{3}{4}\]
+\[\frac{1}{c(0)} = \frac{4}{3}\]
+
+The solution, which matches the prompt, is:
+\[\rho(0, t) = \frac{2e^{-t}e^{-ln^2(\sqrt{3e^{-t} + 1} -1)}}  {3e^{-t} + 1 - \sqrt{3e^{-t} + 1}}\]
+
+
+
+
+\end{document}
